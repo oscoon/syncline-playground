@@ -3,7 +3,8 @@ kind: Kustomization
 namespace: web-production
 resources:
   - ../base
+  - gate-job.yaml
 
 images:
   - name: nginx
-    newTag: "1.27.0"
+    newTag: "1.27.2"

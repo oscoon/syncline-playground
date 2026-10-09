@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: syncline-gate
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation,HookSucceeded
+spec:
+  backoffLimit: 0
+  activeDeadlineSeconds: 3600
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: gate
+          image: syncline-cli:dev
+          imagePullPolicy: IfNotPresent
+          args: ["gate"]
+          env:
+            - { name: SYNCLINE_GATE_URL, valueFrom: { secretKeyRef: { name: syncline-gate, key: url } } }
+            - { name: SYNCLINE_GATE_TOKEN, valueFrom: { secretKeyRef: { name: syncline-gate, key: token } } }
+            - { name: SYNCLINE_APP, value: web-production }
+            - { name: SYNCLINE_NAMESPACE, value: web-production }
+            - { name: SYNCLINE_IMAGES, value: "nginx:1.27.2" }
+            - { name: SYNCLINE_ARGOCD_URL, value: "https://localhost:8080" }
