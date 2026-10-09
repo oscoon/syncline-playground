@@ -1,0 +1,35 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: playground
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://github.com/oscoon/syncline-playground
+  ref: { branch: main }
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: web-staging
+  namespace: flux-system
+spec:
+  interval: 1m
+  path: ./apps/flux-staging
+  prune: true
+  wait: true
+  timeout: 2m
+  sourceRef: { kind: GitRepository, name: playground }
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: web-production
+  namespace: flux-system
+spec:
+  interval: 1m
+  path: ./apps/flux-production
+  prune: true
+  wait: true
+  timeout: 2m
+  sourceRef: { kind: GitRepository, name: playground }

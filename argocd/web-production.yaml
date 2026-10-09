@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: web-production
+  namespace: argocd
+  annotations:
+    notifications.argoproj.io/subscribe.syncline-running.syncline: ""
+    notifications.argoproj.io/subscribe.syncline-deployed.syncline: ""
+    notifications.argoproj.io/subscribe.syncline-failed.syncline: ""
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/oscoon/syncline-playground
+    targetRevision: main
+    path: apps/argo-production
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: web-production
+  syncPolicy:
+    automated: { prune: true, selfHeal: true }
+    syncOptions: [CreateNamespace=true]
