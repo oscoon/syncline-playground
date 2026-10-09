@@ -7,3 +7,4 @@
 - 1.27.1: KAN-1 Add search box
 - 1.27.1: KAN-3 Add search box
 - 1.27.3: KAN-3 Add search box
+- 1.27.4: KAN-4 Add search box
