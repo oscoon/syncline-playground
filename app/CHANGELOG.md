@@ -9,3 +9,4 @@
 - 1.27.3: KAN-3 Add search box
 - 1.27.4: KAN-4 Add search box
 - 1.27.5: KAN-5 Add search box
+- 1.27.5: KAN-6 Add search box
