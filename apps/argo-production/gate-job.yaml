@@ -21,5 +21,5 @@ spec:
             - { name: SYNCLINE_GATE_TOKEN, valueFrom: { secretKeyRef: { name: syncline-gate, key: token } } }
             - { name: SYNCLINE_APP, value: web-production }
             - { name: SYNCLINE_NAMESPACE, value: web-production }
-            - { name: SYNCLINE_IMAGES, value: "nginx:1.27.2" }
+            - { name: SYNCLINE_IMAGES, value: "nginx:1.27.3" }
             - { name: SYNCLINE_ARGOCD_URL, value: "https://localhost:8080" }
