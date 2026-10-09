@@ -6,3 +6,4 @@
 - 1.27.1: SUP-1 Help me
 - 1.27.1: KAN-1 Add search box
 - 1.27.1: KAN-3 Add search box
+- 1.27.3: KAN-3 Add search box
