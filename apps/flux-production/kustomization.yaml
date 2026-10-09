@@ -6,4 +6,4 @@ resources:
   - namespace.yaml
 images:
   - name: nginx
-    newTag: "1.27.3"
+    newTag: "1.27.5"
